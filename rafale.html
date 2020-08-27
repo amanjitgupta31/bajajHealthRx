@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Set the size of the div element that contains the map */
+        
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Rafale</h3>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var paris = {
+                lat: 48.8566,
+                lng: 2.3522
+            };
+            var ambala = {
+                lat: 30.3752,
+                lng: 76.7821
+            };
+            var krasnodar = {
+                lat: 45.0360,
+                lng: 38.9746
+            };
+            var map = new google.maps.Map(
+                document.getElementById('map'), {
+                    zoom: 3,
+                    center: krasnodar
+                });
+            var marker1 = new google.maps.Marker({
+                position: ambala,
+                map: map
+            });
+            var marker2 = new google.maps.Marker({
+                position: paris,
+                map: map
+            });
+            const flightPlanCoordinates = [{
+                lat: 48.8566,
+                lng: 2.3522
+            }, {
+                lat: 30.3752,
+                lng: 76.7821
+            }];
+            var flightPath = new google.maps.Polyline({
+                path: flightPlanCoordinates
+            });
+            flightPath.setMap(map);
+        }
+    </script>
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9_P2K_cW__jzzvVZ0sHTwE6YduCUqTBk&callback=initMap">
+    </script>
+
+</body>
+
+</html>
